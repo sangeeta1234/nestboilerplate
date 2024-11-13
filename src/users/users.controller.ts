@@ -45,7 +45,14 @@ export class UsersController {
   //   }
 
   @Get('/hello')
-  hellouser(): string {
-    return 'Hello User';
+  async hellouser(): Promise<any> {
+    console.log(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject('Promise resolved successfully!');
+        }, 1000);
+      }),
+    );
+    return 'Welcome Home';
   }
 }

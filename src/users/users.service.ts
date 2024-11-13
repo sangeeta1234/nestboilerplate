@@ -38,8 +38,13 @@ export class UsersService {
     return await bcrypt.compare(plainPassword, hashedPassword);
   }
 
-  @Get()
-  async welcome() {
-    return 'Welcome Home';
-  }
+  // @Get()
+  // async welcome() {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve('Promise resolved successfully!');
+  //     }, 1000);
+  //   });
+  //   return 'Welcome Home';
+  // }
 }

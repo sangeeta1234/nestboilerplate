@@ -19,29 +19,21 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
-
-            - name: Install dependencies
         run: |
-          npm install -g serverless
           npm install
+          npm install -g serverless
 
       - name: Set up Serverless authentication
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.SLS_API_KEY }}" > ~/.npmrc
 
-      - name: Deploy using Serverless Framework
-        run: |
-          serverless deploy
-        env:
-          SLS_API_KEY: ${{ secrets.SLS_API_KEY }}
-
       - name: Build the project
         run: npm run build-lambda
 
-      - name: Deploy with Serverless Framework
+      - name: Deploy using Serverless Framework
         run: npx serverless deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
+          SLS_API_KEY: ${{ secrets.SLS_API_KEY }}

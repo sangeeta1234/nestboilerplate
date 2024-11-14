@@ -46,6 +46,6 @@ export class UsersController {
 
   @Get('/hello')
   async hellouser(): Promise<any> {
-    return 'Welcome Home';
+    return 'Welcome Home Hi';
   }
 }

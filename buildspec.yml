@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      # Install dependencies
+      npm install
+  build:
+    commands:
+      # Build the NestJS application
+      npm run build
+  post_build:
+    commands:
+      # Deploy the application using the Serverless Framework
+      npx serverless deploy
+artifacts:
+  files:
+    - serverless.yml
+    - dist-lambda/**
+    - node_modules/**

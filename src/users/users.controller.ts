@@ -13,16 +13,16 @@ import { CreateUserDto } from './dto/create-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // Endpoint to create a new user
-  @Post()
-  @HttpCode(HttpStatus.CREATED)
-  async createUser(@Body() createUserDto: CreateUserDto) {
-    const newUser = await this.usersService.create(createUserDto);
-    return {
-      message: 'User created successfully',
-      data: newUser,
-    };
-  }
+  // // Endpoint to create a new user
+  // @Post()
+  // @HttpCode(HttpStatus.CREATED)
+  // async createUser(@Body() createUserDto: CreateUserDto) {
+  //   const newUser = await this.usersService.create(createUserDto);
+  //   return {
+  //     message: 'User created successfully',
+  //     data: newUser,
+  //   };
+  // }
 
   // Optional: Endpoint to validate user login
   //   @Post('login')
@@ -46,13 +46,6 @@ export class UsersController {
 
   @Get('/hello')
   async hellouser(): Promise<any> {
-    console.log(
-      new Promise((resolve, reject) => {
-        setTimeout(() => {
-          reject('Promise resolved successfully!');
-        }, 1000);
-      }),
-    );
     return 'Welcome Home';
   }
 }
